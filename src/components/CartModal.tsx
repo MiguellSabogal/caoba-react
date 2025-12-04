@@ -7,16 +7,31 @@ const CartModal = ({ isOpen, toggleCart, cart, removeFromCart }) => {
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   const handleCheckout = () => {
-    if (cart.length === 0) return alert("El carrito está vacío");
+    // 1. Validación de seguridad
+    if (cart.length === 0) {
+        alert("El carrito está vacío. Agrega productos primero.");
+        return;
+    }
 
-    let message = "Hola Caoba & Cuero, quiero realizar el siguiente pedido:%0A%0A";
+    // 2. Construcción del mensaje profesional
+    // Usamos \n para saltos de línea que luego codificaremos
+    let text = "Hola Caoba & Cuero, me gustaría realizar el siguiente pedido:\n\n";
+    
     cart.forEach(item => {
-      message += `- ${item.name} ($${item.price.toLocaleString('es-CO')})%0A`;
+      text += `- ${item.name} ($${item.price.toLocaleString('es-CO')})\n`;
     });
-    message += `%0A*Total a pagar: $${total.toLocaleString('es-CO')}*`;
+    
+    text += `\n*Total a pagar: $${total.toLocaleString('es-CO')}*`;
 
-    // REEMPLAZA CON TU NÚMERO
-    window.open(`https://wa.me/573001855009?text=${message}`, '_blank');
+    // 3. Codificación de URL (La parte mágica para que no falle)
+    const encodedMessage = encodeURIComponent(text);
+    
+    // 4. Tu número de teléfono (CÁMBIALO AQUÍ)
+    // Formato: Código de país (57) + Número. SIN espacios ni el símbolo +
+    const phoneNumber = "573001234567"; 
+
+    // 5. Abrir WhatsApp
+    window.open(`https://wa.me/5730018855009?text=${encodedMessage}`, '_blank');
   };
 
   return (
