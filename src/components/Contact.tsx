@@ -55,12 +55,12 @@ const Contact = () => {
           <div className="contact-info">
             <h3>Visítanos</h3>
             <p>Bogotá Distrito Capital, CP 111000</p>
-            <p>info@caoba-cuero.com</p>
-            <p>+57 300 123 4567</p>
+            <p>caobaycuero@gmail.com</p>
+            <p>+57 300 1855009</p>
             
             <div className="social-icons">
               <a href="https://www.instagram.com/caobaycuerooficial?igsh=MW1vODRubTlyaTNlOA=="><i className="fab fa-instagram"></i></a>
-              <a href="#"><i className="fab fa-whatsapp"></i></a>
+              <a href="https://wa.me/573001855009?text=Quisiera%20saber%20m%C3%A1s%20de%20tus%20productos!!%20%F0%9F%8E%8A"><i className="fab fa-whatsapp"></i></a>
             </div>
           </div>
 

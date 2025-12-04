@@ -16,7 +16,7 @@ const CartModal = ({ isOpen, toggleCart, cart, removeFromCart }) => {
     message += `%0A*Total a pagar: $${total.toLocaleString('es-CO')}*`;
 
     // REEMPLAZA CON TU NÚMERO
-    window.open(`https://wa.me/573001234567?text=${message}`, '_blank');
+    window.open(`https://wa.me/573001855009?text=${message}`, '_blank');
   };
 
   return (
