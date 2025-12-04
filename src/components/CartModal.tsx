@@ -31,7 +31,7 @@ const CartModal = ({ isOpen, toggleCart, cart, removeFromCart }) => {
     const phoneNumber = "573001234567"; 
 
     // 5. Abrir WhatsApp
-    window.open(`https://wa.me/30018855009?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/573001855009?text=${encodedMessage}`, '_blank');
   };
 
   return (
