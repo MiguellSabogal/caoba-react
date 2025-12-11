@@ -18,7 +18,7 @@ const Navbar = ({ activeTab, setActiveTab, cartCount, toggleCart }) => {
       </div>
       
       <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
-        {['inicio', 'productos', 'beneficios', 'contacto'].map((tab) => (
+        {['inicio', 'productos', 'beneficios', 'contacto', 'como comprar'].map((tab) => (
           <li key={tab}>
             <a 
               href="#" 

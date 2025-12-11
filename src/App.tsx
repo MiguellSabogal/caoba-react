@@ -6,6 +6,7 @@ import Benefits from './components/Benefits';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CartModal from './components/CartModal';
+import HowItWorks from './components/HowItWorks';
 
 function App() {
   const [activeTab, setActiveTab] = useState('inicio');
@@ -95,6 +96,7 @@ function App() {
         {activeTab === 'inicio' && <Hero setActiveTab={setActiveTab} />}
         {activeTab === 'productos' && <Products addToCart={addToCart} />}
         {activeTab === 'beneficios' && <Benefits />}
+        {activeTab === 'como comprar' && <HowItWorks setActiveTab={setActiveTab} />}
         
         {/* Pasamos showNotification a Contacto */}
         {activeTab === 'contacto' && <Contact showNotification={showNotification} />}
