@@ -1,37 +1,32 @@
 import React from 'react';
 
 const CartModal = ({ isOpen, toggleCart, cart, removeFromCart }) => {
-  if (!isOpen) return null; // Si está cerrado, no renderiza nada
+  if (!isOpen) return null;
 
-  // Calcular total
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  // 1. Calcular total (Precio * Cantidad)
+  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   const handleCheckout = () => {
-    // 1. Validación de seguridad
     if (cart.length === 0) {
         alert("El carrito está vacío. Agrega productos primero.");
         return;
     }
 
-    // 2. Construcción del mensaje profesional
-    // Usamos \n para saltos de línea que luego codificaremos
     let text = "Hola Caoba & Cuero, me gustaría realizar el siguiente pedido:\n\n";
     
+    // 2. Mensaje de WhatsApp detallado
     cart.forEach(item => {
-      text += `- ${item.name} ($${item.price.toLocaleString('es-CO')})\n`;
+      const subtotal = item.price * item.quantity;
+      text += `- ${item.name} (x${item.quantity}) - $${subtotal.toLocaleString('es-CO')}\n`;
     });
     
     text += `\n*Total a pagar: $${total.toLocaleString('es-CO')}*`;
 
-    // 3. Codificación de URL (La parte mágica para que no falle)
     const encodedMessage = encodeURIComponent(text);
-    
-    // 4. Tu número de teléfono (CÁMBIALO AQUÍ)
-    // Formato: Código de país (57) + Número. SIN espacios ni el símbolo +
-    const phoneNumber = "573001234567"; 
+    // Asegúrate de poner tu número real aquí
+    const phoneNumber = "573001855009"; 
 
-    // 5. Abrir WhatsApp
-    window.open(`https://api.whatsapp.com/send?phone=573001855009&text=${encodedMessage}`, '_blank');
+    window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`, '_blank');
   };
 
   return (
@@ -46,15 +41,20 @@ const CartModal = ({ isOpen, toggleCart, cart, removeFromCart }) => {
           {cart.length === 0 ? (
             <p className="empty-msg">Tu carrito está vacío.</p>
           ) : (
-            cart.map((item, index) => (
-              <div key={index} className="cart-item">
+            cart.map((item) => (
+              // Usamos item.id como key
+              <div key={item.id} className="cart-item">
                 <div>
-                  <h4>{item.name}</h4>
-                  <p>${item.price.toLocaleString('es-CO')}</p>
+                  <h4>
+                    {item.name} <small>(x{item.quantity})</small>
+                  </h4>
+                  {/* Mostramos el subtotal de este item */}
+                  <p>${(item.price * item.quantity).toLocaleString('es-CO')}</p>
                 </div>
                 <i 
                   className="fas fa-trash-alt btn-remove" 
-                  onClick={() => removeFromCart(index)}
+                  // 3. Importante: Pasamos el ID para eliminar
+                  onClick={() => removeFromCart(item.id)}
                 ></i>
               </div>
             ))
