@@ -614,3 +614,59 @@ footer {
         background-color: #c5a059; /* Dorado al pasar el mouse */
     }
 }
+
+/* --- NOTIFICACIONES TOAST --- */
+.notification-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%); /* Centrado horizontal */
+  background-color: #333;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 2000; /* Por encima de todo, incluso del modal */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, top 0.8s ease;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notification-toast.show {
+  opacity: 1;
+  visibility: visible;
+  top: 30px; 
+}
+
+.notification-toast.error {
+  background-color: #d32f2f; 
+}
+
+.notification-toast.success {
+  background-color: #2e7d32; 
+}
+
+.btn-whatsapp-confirm {
+  background-color: #25D366; /* Verde WhatsApp */
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.3s;
+}
+
+.btn-whatsapp-confirm:hover {
+  background-color: #1ebc57;
+}

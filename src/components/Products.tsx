@@ -1,123 +1,168 @@
 import { useState } from 'react';
 
 const productsData = [
-  { id: 1, name: "Billetera Marron", category: "billeteras", price: 50000, img: "Imagenes/Billeteras/Marron.jpg" },
-  { id: 2, name: "Billetera Azul Oscura", category: "billeteras", price: 50000, img: "Imagenes/Billeteras/AzulOs.jpg" },
-  { id: 3, name: "Billetera Negra", category: "billeteras", price: 50000, img: "Imagenes/Billeteras/Negra.jpg" },
-  { id: 4, name: "Billetera Roja", category: "billeteras", price: 50000, img: "Imagenes/Billeteras/Roja.jpg" },
-  { id: 5, name: "Correa Aguamarina", category: "correas", price: 60000, img: "Imagenes/Correas/Aguamarina.jpg" },
-  { id: 6, name: "Correa Amarilla-Azul", category: "correas", price: 60000, img: "Imagenes/Correas/AmarilloAzul.jpg" },
-  { id: 7, name: "Correa Tonos Azules", category: "correas", price: 60000, img: "Imagenes/Correas/Azules.jpg" },
-  { id: 8, name: "Correa Rosa & Verde", category: "correas", price: 60000, img: "Imagenes/Correas/AzulesRosaVerde.jpg" },
-  { id: 9, name: "Correa Azul Oscura", category: "correas", price: 60000, img: "Imagenes/Correas/AzulOs.jpg" },
-  { id: 10, name: "Correa Beige & Gris", category: "correas", price: 60000, img: "Imagenes/Correas/BeigeGris.jpg" },
-  { id: 11, name: "Correa Beige & Rosa", category: "correas", price: 60000, img: "Imagenes/Correas/BeigeRosa.jpg" },
-  { id: 12, name: "Correa Blanco & Azul", category: "correas", price: 60000, img: "Imagenes/Correas/BlancoAzulOs.jpg" },
-  { id: 13, name: "Correa Blanco & Café", category: "correas", price: 60000, img: "Imagenes/Correas/BlancoCafe.jpg" },
-  { id: 14, name: "Correa Blanco & Naranja", category: "correas", price: 60000, img: "Imagenes/Correas/BlancoNaranja.jpg" },
-  { id: 15, name: "Correa Combinación de Cafés", category: "correas", price: 60000, img: "Imagenes/Correas/Cafes.jpg" },
-  { id: 16, name: "Correa Marrón", category: "correas", price: 60000, img: "Imagenes/Correas/CafesOs.jpg" },
-  { id: 17, name: "Correa Cookie", category: "correas", price: 60000, img: "Imagenes/Correas/Cookie.jpg" },
-  { id: 18, name: "Correa Gris", category: "correas", price: 60000, img: "Imagenes/Correas/Gris.jpg" },
-  { id: 19, name: "Correa Tonos Oscuros de Marrón", category: "correas", price: 60000, img: "Imagenes/Correas/Marron.jpg" },
-  { id: 20, name: "Correa Naranja", category: "correas", price: 60000, img: "Imagenes/Correas/Naranja.jpg" },
-  { id: 21, name: "Correa Naranja & Azul", category: "correas", price: 60000, img: "Imagenes/Correas/NaranjaAzulOs.jpg" },
-  { id: 22, name: "Correa Negra", category: "correas", price: 60000, img: "Imagenes/Correas/Negra.jpg" },
-  { id: 23, name: "Correa Negra & Beige", category: "correas", price: 60000, img: "Imagenes/Correas/NegroBeige.jpg" },
-  { id: 24, name: "Correa Tonos Pasteles", category: "correas", price: 60000, img: "Imagenes/Correas/Pastel.jpg" },
-  { id: 25, name: "Correa Azul Rey", category: "correas", price: 60000, img: "Imagenes/Correas/Rey.jpg" },
-  { id: 26, name: "Correa Rosa & Azul", category: "correas", price: 60000, img: "Imagenes/Correas/RosaAzul.jpg" },
-  { id: 27, name: "Correa Rosa & Celeste", category: "correas", price: 60000, img: "Imagenes/Correas/RosaCeleste.jpg" },
-  { id: 28, name: "Correa Rosa & Gris", category: "correas", price: 60000, img: "Imagenes/Correas/RosaGris.jpg" },
-  { id: 29, name: "Correa Rosa & Negra", category: "correas", price: 60000, img: "Imagenes/Correas/RosaNegro.jpg" },
-  { id: 30, name: "Correa Rosas", category: "correas", price: 60000, img: "Imagenes/Correas/Rosas.jpg" },
-  { id: 31, name: "Correa Verde & Beige", category: "correas", price: 60000, img: "Imagenes/Correas/VerdeBeige.jpg" },
-  { id: 32, name: "Correa Verde & Negro", category: "correas", price: 60000, img: "Imagenes/Correas/VerdeNegro.jpg" },
-  { id: 33, name: "Set Caballero", category: "kits", price: 90000, img: "Imagenes/ImagenCombo.png" },
-  { id: 34, name: "Cartera Blanca", category: "carteras", price: 120000, img: "Imagenes/Carteras/Blanca.jpg" },
-  { id: 35, name: "Cartera Negra", category: "carteras", price: 120000, img: "Imagenes/Carteras/Negra.jpg" },
-  { id: 36, name: "Cartera Rosa", category: "carteras", price: 120000, img: "Imagenes/Carteras/Rosa.jpg" },
-  { id: 37, name: "Cartera Roja", category: "carteras", price: 120000, img: "Imagenes/Carteras/Roja.jpg" },
-  { id: 38, name: "Cartera Cafe", category: "carteras", price: 120000, img: "Imagenes/Carteras/Cafe.jpg" },
+  { id: 1, name: "Billetera en cuero color Miel", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Marron.jpg" },
+  { id: 2, name: "Billetera en cuero color Azul Oscura", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/AzulOs.jpg" },
+  { id: 3, name: "Billetera en cuero color Negro", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Negra.jpg" },
+  { id: 4, name: "Billetera en cuero color Rojo", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Roja.jpg" },
+  
+  { id: 5, name: "Cinturón Aguamarina", category: "cinturones", price: 59900, img: "Imagenes/Correas/Aguamarina.jpg" },
+  { id: 6, name: "Cinturón Amarillo-Azul", category: "cinturones", price: 59900, img: "Imagenes/Correas/AmarilloAzul.jpg" },
+  { id: 7, name: "Cinturón Tonos Azules", category: "cinturones", price: 59900, img: "Imagenes/Correas/Azules.jpg" },
+  { id: 8, name: "Cinturón Rosa & Verde", category: "cinturones", price: 59900, img: "Imagenes/Correas/AzulesRosaVerde.jpg" },
+  { id: 9, name: "Cinturón Azul Oscuro", category: "cinturones", price: 59900, img: "Imagenes/Correas/AzulOs.jpg" },
+  { id: 10, name: "Cinturón Beige & Gris", category: "cinturones", price: 59900, img: "Imagenes/Correas/BeigeGris.jpg" },
+  { id: 11, name: "Cinturón Beige & Rosa", category: "cinturones", price: 59900, img: "Imagenes/Correas/BeigeRosa.jpg" },
+  { id: 12, name: "Cinturón Blanco & Azul", category: "cinturones", price: 59900, img: "Imagenes/Correas/BlancoAzulOs.jpg" },
+  { id: 13, name: "Cinturón Blanco & Café", category: "cinturones", price: 59900, img: "Imagenes/Correas/BlancoCafe.jpg" },
+  { id: 14, name: "Cinturón Blanco & Naranja", category: "cinturones", price: 59900, img: "Imagenes/Correas/BlancoNaranja.jpg" },
+  { id: 15, name: "Cinturón Combinación Cafés", category: "cinturones", price: 59900, img: "Imagenes/Correas/Cafes.jpg" },
+  { id: 16, name: "Cinturón Marrón", category: "cinturones", price: 59900, img: "Imagenes/Correas/CafesOs.jpg" },
+  { id: 17, name: "Cinturón Cookie", category: "cinturones", price: 59900, img: "Imagenes/Correas/Cookie.jpg" },
+  { id: 18, name: "Cinturón Gris", category: "cinturones", price: 59900, img: "Imagenes/Correas/Gris.jpg" },
+  { id: 19, name: "Cinturón Tonos Marrón", category: "cinturones", price: 59900, img: "Imagenes/Correas/Marron.jpg" },
+  { id: 20, name: "Cinturón Naranja", category: "cinturones", price: 59900, img: "Imagenes/Correas/Naranja.jpg" },
+  { id: 21, name: "Cinturón Naranja & Azul", category: "cinturones", price: 59900, img: "Imagenes/Correas/NaranjaAzulOs.jpg" },
+  { id: 22, name: "Cinturón Negro", category: "cinturones", price: 59900, img: "Imagenes/Correas/Negra.jpg" },
+  { id: 23, name: "Cinturón Negro & Beige", category: "cinturones", price: 59900, img: "Imagenes/Correas/NegroBeige.jpg" },
+  { id: 24, name: "Cinturón Tonos Pasteles", category: "cinturones", price: 59900, img: "Imagenes/Correas/Pastel.jpg" },
+  { id: 25, name: "Cinturón Azul Rey", category: "cinturones", price: 59900, img: "Imagenes/Correas/Rey.jpg" },
+  { id: 26, name: "Cinturón Rosa & Azul", category: "cinturones", price: 59900, img: "Imagenes/Correas/RosaAzul.jpg" },
+  { id: 27, name: "Cinturón Rosa & Celeste", category: "cinturones", price: 59900, img: "Imagenes/Correas/RosaCeleste.jpg" },
+  { id: 28, name: "Cinturón Rosa & Gris", category: "cinturones", price: 59900, img: "Imagenes/Correas/RosaGris.jpg" },
+  { id: 29, name: "Cinturón Rosa & Negro", category: "cinturones", price: 59900, img: "Imagenes/Correas/RosaNegro.jpg" },
+  { id: 30, name: "Cinturón Rosas", category: "cinturones", price: 59900, img: "Imagenes/Correas/Rosas.jpg" },
+  { id: 31, name: "Cinturón Verde & Beige", category: "cinturones", price: 59900, img: "Imagenes/Correas/VerdeBeige.jpg" },
+  { id: 32, name: "Cinturón Verde & Negro", category: "cinturones", price: 59900, img: "Imagenes/Correas/VerdeNegro.jpg" },
+  
+  // --- COMBOS ---
+  { id: 33, name: "Combo Caballero", category: "combos", price: 90000, img: "Imagenes/ImagenCombo.png" },
+  
+  { id: 34, name: "Portadocumentos Azul Cielo", category: "portadocumentos", price: 19900, img: "Imagenes/Carteras/Blanca.jpg" },
+  { id: 35, name: "Portadocumentos Negro Mate", category: "portadocumentos", price: 19900, img: "Imagenes/Carteras/Negra.jpg" },
+  { id: 36, name: "Portadocumentos Lila", category: "portadocumentos", price: 19900, img: "Imagenes/Carteras/Rosa.jpg" },
+  { id: 37, name: "Portadocumentos Beige", category: "portadocumentos", price: 19900, img: "Imagenes/Carteras/Roja.jpg" },
+  { id: 38, name: "Portadocumentos Palo De Rosa", category: "portadocumentos", price: 19900, img: "Imagenes/Carteras/Cafe.jpg" },
+  { id: 39, name: "Billetera en cuero color Coña", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Conia.jpg" },
+  { id: 40, name: "Billetera en cuero color Café Oscuro", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Cafe oscuro.jpg" },
+  { id: 41, name: "Billetera en cuero color Hoja Seca", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/HojaSeca.jpg" },
 ];
 
-// --- SUB-COMPONENTE: TARJETA INDIVIDUAL ---
-// Este componente tiene su propio estado "quantity" independiente de los demás
 const ProductItem = ({ product, addToCart }) => {
   const [quantity, setQuantity] = useState(1);
 
   const increase = () => setQuantity(prev => prev + 1);
-  
   const decrease = () => {
-    if (quantity > 1) {
-      setQuantity(prev => prev - 1);
-    }
+    if (quantity > 1) setQuantity(prev => prev - 1);
   };
 
   return (
     <div className="product-card fade-in">
       <div className="product-image">
-        <img src={product.img} alt={product.name} />
+        {/* MEJORA: loading="lazy" hace que la imagen solo se cargue cuando aparece en pantalla */}
+        <img src={product.img} alt={product.name} loading="lazy" />
       </div>
       <div className="product-info">
         <h3>{product.name}</h3>
         <span className="price">${product.price.toLocaleString('es-CO')}</span>
         
-        {/* CONTROL DE CANTIDAD */}
         <div className="quantity-selector">
             <button className="qty-btn" onClick={decrease}>-</button>
             <span className="qty-number">{quantity}</span>
             <button className="qty-btn" onClick={increase}>+</button>
         </div>
 
-        {/* Enviamos el producto Y la cantidad seleccionada */}
         <button 
           className="btn-secondary"
           onClick={() => addToCart(product, quantity)}
         >
-          Agregar al Carrito
+          Agregar
         </button>
       </div>
     </div>
   );
 };
 
-
-// --- COMPONENTE PRINCIPAL ---
 const Products = ({ addToCart }) => {
   const [filter, setFilter] = useState('todos');
+  
+  // MEJORA: Nuevo estado para la búsqueda
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const filteredProducts = filter === 'todos' 
-    ? productsData 
-    : productsData.filter(p => p.category === filter);
+  // Lógica de filtrado combinada (Categoría + Búsqueda)
+  const filteredProducts = productsData.filter(product => {
+    // 1. Cumple categoría?
+    const matchesCategory = filter === 'todos' ? true : product.category === filter;
+    // 2. Cumple búsqueda? (Convertimos todo a minúsculas para que no importen mayúsculas)
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    return matchesCategory && matchesSearch;
+  });
+
+  const categories = [
+    { key: 'todos', label: 'Todos' },
+    { key: 'cinturones', label: 'Cinturones' },
+    { key: 'billeteras', label: 'Billeteras' },
+    { key: 'portadocumentos', label: 'Portadocumentos' }, 
+    { key: 'combos', label: 'Combos' } 
+  ];
 
   return (
     <section id="productos" className="section tab-content active-tab">
       <div className="container">
         <h2 className="section-title">Nuestra Colección</h2>
 
-        <div className="filter-menu">
-          {['todos', 'correas', 'billeteras', 'carteras', 'kits'].map(cat => (
-            <button 
-              key={cat}
-              className={`filter-btn ${filter === cat ? 'active' : ''}`}
-              onClick={() => setFilter(cat)}
-            >
-              {cat.charAt(0).toUpperCase() + cat.slice(1)}
-            </button>
-          ))}
+        {/* MEJORA: Barra de Búsqueda y Filtros juntos */}
+        <div className="controls-container" style={{ marginBottom: '30px' }}>
+          
+          {/* Input de Búsqueda */}
+          <div className="search-bar" style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+            <input 
+              type="text" 
+              placeholder="🔍 Buscar producto..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              style={{
+                padding: '10px 15px',
+                width: '100%',
+                maxWidth: '400px',
+                borderRadius: '25px',
+                border: '1px solid #ddd',
+                fontSize: '1rem'
+              }}
+            />
+          </div>
+
+          <div className="filter-menu">
+            {categories.map(cat => (
+              <button 
+                key={cat.key}
+                className={`filter-btn ${filter === cat.key ? 'active' : ''}`}
+                onClick={() => setFilter(cat.key)}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="products-grid">
-          {filteredProducts.map(product => (
-            // Llamamos al sub-componente
-            <ProductItem 
-              key={product.id} 
-              product={product} 
-              addToCart={addToCart} 
-            />
-          ))}
-        </div>
+        {/* Mensaje si no hay resultados */}
+        {filteredProducts.length === 0 ? (
+           <div style={{ textAlign: 'center', padding: '40px', color: '#666' }}>
+             <i className="fas fa-search" style={{ fontSize: '2rem', marginBottom: '10px', opacity: 0.5 }}></i>
+             <p>No encontramos productos que coincidan con tu búsqueda.</p>
+           </div>
+        ) : (
+          <div className="products-grid">
+            {filteredProducts.map(product => (
+              <ProductItem 
+                key={product.id} 
+                product={product} 
+                addToCart={addToCart} 
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

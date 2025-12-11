@@ -9,91 +9,98 @@ import CartModal from './components/CartModal';
 
 function App() {
   const [activeTab, setActiveTab] = useState('inicio');
+  
+  // --- ESTADO PARA NOTIFICACIONES (Adiós Alerts) ---
+  const [notification, setNotification] = useState({ show: false, msg: '', type: '' });
+
+  const showNotification = (msg, type = 'success') => {
+    setNotification({ show: true, msg, type });
+    // Se oculta sola a los 3 segundos
+    setTimeout(() => {
+      setNotification({ show: false, msg: '', type: '' });
+    }, 3000);
+  };
 
   // --- LÓGICA DEL CARRITO ---
-  
-  // 1. Inicializar estado cargando desde LocalStorage si existe
   const [cart, setCart] = useState(() => {
     try {
       const savedCart = localStorage.getItem('cart');
       return savedCart ? JSON.parse(savedCart) : [];
     } catch (error) {
-      console.error("Error al cargar el carrito", error);
       return [];
     }
   });
   
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // 2. Guardar en LocalStorage cada vez que el carrito cambie
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  // 3. Función addToCart optimizada (Agrupa por ID)
   const addToCart = (productToAdd, quantityToAdd) => {
     setCart((prevCart) => {
-      // Verificamos si el producto ya existe en el carrito
       const itemExists = prevCart.find((item) => item.id === productToAdd.id);
-
       if (itemExists) {
-        // Si existe, actualizamos solo la cantidad
         return prevCart.map((item) =>
           item.id === productToAdd.id
             ? { ...item, quantity: item.quantity + quantityToAdd }
             : item
         );
       } else {
-        // Si no existe, lo agregamos con la cantidad seleccionada
         return [...prevCart, { ...productToAdd, quantity: quantityToAdd }];
       }
     });
-
-    // Abrimos el carrito automáticamente para dar feedback
+    
+    // Opcional: Mostrar notificación al agregar
+    // showNotification(`Agregado: ${productToAdd.name}`, 'success'); 
     setIsCartOpen(true);
   };
 
-  // 4. Función removeFromCart (Ahora elimina por ID)
   const removeFromCart = (idToRemove) => {
     setCart(cart.filter((item) => item.id !== idToRemove));
+    showNotification("Producto eliminado", "error"); // Feedback visual
   };
 
   const toggleCart = () => setIsCartOpen(!isCartOpen);
 
-  // Calcular cantidad total de ITEMS (no solo filas) para la burbuja del navbar
   const totalItemsInCart = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <div className="app-container">
+      
+      {/* COMPONENTE VISUAL DE LA NOTIFICACIÓN */}
+      <div className={`notification-toast ${notification.show ? 'show' : ''} ${notification.type}`}>
+        {notification.type === 'success' && <i className="fas fa-check-circle"></i>}
+        {notification.type === 'error' && <i className="fas fa-exclamation-circle"></i>}
+        {notification.msg}
+      </div>
+
       <Navbar 
         activeTab={activeTab} 
         setActiveTab={setActiveTab} 
-        cartCount={totalItemsInCart} // Muestra el total real de productos
+        cartCount={totalItemsInCart} 
         toggleCart={toggleCart} 
       />
 
+      {/* Pasamos showNotification al Modal */}
       <CartModal 
         isOpen={isCartOpen} 
         toggleCart={toggleCart} 
         cart={cart} 
         removeFromCart={removeFromCart}
+        showNotification={showNotification} 
       />
 
       <main>
         {activeTab === 'inicio' && <Hero setActiveTab={setActiveTab} />}
-        
-        {/* Pasamos la función addToCart a los productos */}
         {activeTab === 'productos' && <Products addToCart={addToCart} />}
-        
         {activeTab === 'beneficios' && <Benefits />}
-        {activeTab === 'contacto' && <Contact />}
+        
+        {/* Pasamos showNotification a Contacto */}
+        {activeTab === 'contacto' && <Contact showNotification={showNotification} />}
       </main>
 
       <Footer />
-      
-      <a href="https://wa.me/573001855009" className="btn-whatsapp" target="_blank" rel="noreferrer">
-        <i className="fas fa-whatsapp"></i>
-      </a>
     </div>
   );
 }

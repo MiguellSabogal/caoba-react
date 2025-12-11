@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
-// CORRECCIÓN 1: Rutas de imágenes (Quitamos "/public")
-// Asegúrate de que en tu carpeta física exista: proyecto/public/Imagenes/SlidePrincipal.png
+// Actualizamos Títulos y Botones en el array de slides
 const slides = [
   {
     id: 1,
@@ -13,15 +12,15 @@ const slides = [
   },
   {
     id: 2,
-    title: "Correas de Autor",
+    title: "Cinturones Tejidos", // CAMBIO: Correas -> Cinturones
     desc: "Detalles hechos a mano para un ajuste perfecto.",
     bg: "/Imagenes/SlideCorrea.png",
-    btnText: "Ver Correas",
+    btnText: "Ver Cinturones",   // CAMBIO
     target: "productos"
   },
   {
     id: 3,
-    title: "Billeteras",
+    title: "Billeteras para hombre",
     desc: "Diseños compactos y funcionales.",
     bg: "/Imagenes/SlideBilleteras.png",
     btnText: "Ver Billeteras",
@@ -29,10 +28,10 @@ const slides = [
   },
   {
     id: 4,
-    title: "Carteras",
+    title: "Portadocumentos",    // CAMBIO: Carteras -> Portadocumentos
     desc: "Espacio y estilo en cada detalle.",
     bg: "/Imagenes/SlideCarteras.png",
-    btnText: "Ver Carteras",
+    btnText: "Ver Portadocumentos", // CAMBIO
     target: "productos"
   },
 ];
@@ -40,24 +39,20 @@ const slides = [
 const Hero = ({ setActiveTab }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Funciones para las flechas manuales
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
-    // Si es el primero (0), vamos al último. Si no, restamos 1.
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
 
-  // Timer automático
   useEffect(() => {
     const timer = setInterval(() => {
       nextSlide();
     }, 5000);
-    // Limpiamos el timer si el componente se desmonta o cambia el slide manualmente
     return () => clearInterval(timer);
-  }, [currentSlide]); // Agregamos currentSlide aquí para reiniciar el contador si tocas una flecha
+  }, [currentSlide]);
 
   return (
     <header id="hero-slider">
@@ -84,7 +79,6 @@ const Hero = ({ setActiveTab }) => {
         </div>
       ))}
       
-      {/* CORRECCIÓN 2: Botones de Flechas agregados */}
       <button className="slider-btn prev-btn" onClick={prevSlide}>
         <i className="fas fa-chevron-left"></i>
       </button>
