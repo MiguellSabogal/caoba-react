@@ -670,3 +670,11 @@ footer {
 .btn-whatsapp-confirm:hover {
   background-color: #1ebc57;
 }
+/* Descripción del producto */
+.product-desc {
+    font-size: 0.9rem;
+    color: #b0b0b0; /* Gris suave */
+    margin-bottom: 10px;
+    line-height: 1.4;
+    min-height: 40px; /* Truco: Mantiene todas las tarjetas del mismo alto aunque el texto sea corto */
+}

@@ -36,7 +36,7 @@ const productsData = [
   { id: 32, name: "Cinturón Verde & Negro", category: "cinturones", price: 59900, img: "Imagenes/Correas/VerdeNegro.jpg" },
   
   // --- COMBOS ---
-  { id: 33, name: "Combo Caballero", category: "combos", price: 90000, img: "Imagenes/ImagenCombo.png" },
+  { id: 33, name: "Combo Especial", category: "combos", price: 69900, img: "Imagenes/ImagenCombo.png", description:"Incluye un cinturón y una billetera de cuero a elección" },
   
   { id: 34, name: "Portadocumentos Azul Cielo", category: "portadocumentos", price: 19900, img: "Imagenes/Carteras/Blanca.jpg" },
   { id: 35, name: "Portadocumentos Negro Mate", category: "portadocumentos", price: 19900, img: "Imagenes/Carteras/Negra.jpg" },
@@ -46,6 +46,15 @@ const productsData = [
   { id: 39, name: "Billetera en cuero color Coña", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Conia.jpg" },
   { id: 40, name: "Billetera en cuero color Café Oscuro", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Cafe oscuro.jpg" },
   { id: 41, name: "Billetera en cuero color Hoja Seca", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/HojaSeca.jpg" },
+  { id: 42, name: "Combo dupla", category: "combos", price: 79900, img: "Imagenes/Combos/DosCorreas.jpg", description:"Incluye dos cinturones a elección" },
+  { id: 43, name: "Combo Pareja", category: "combos", price: 99900, img: "Imagenes/Combos/DosCorreasYBilletera.jpg", description:"Incluye dos cinturones y una billetera de cuero a elección" },
+  { id: 44, name: "Combo trio", category: "combos", price: 109900, img: "Imagenes/ImagenCombo.png", description:"Incluye tres cinturones a elección" },
+  { id: 45, name: "Combo seguro", category: "combos", price: 55900, img: "Imagenes/ImagenCombo.png", description:"Incluye una billetera de cuero y un portadocumentos de cuero a elección" },
+  { id: 46, name: "Combo perfecto", category: "combos", price: 65900, img: "Imagenes/ImagenCombo.png", description:"Incluye un cinturón y un portadocumentos a elección" },
+  { id: 47, name: "Combo para regalar", category: "combos", price: 89900, img: "Imagenes/ImagenCombo.png", description:"Incluye un cinturón, una billetera de cuero y un portadocumentos a elección" },
+  { id: 48, name: "Combo X3", category: "combos", price: 49900, img: "Imagenes/ImagenCombo.png", description:"Incluye tres portadocumentos a elección" },
+  { id: 49, name: "Combo X5", category: "combos", price: 69900, img: "Imagenes/ImagenCombo.png", description:"Incluye cinco portadocumentos a elección" },
+
 ];
 
 const ProductItem = ({ product, addToCart }) => {
@@ -64,6 +73,7 @@ const ProductItem = ({ product, addToCart }) => {
       </div>
       <div className="product-info">
         <h3>{product.name}</h3>
+        <p className="product-desc">{product.description}</p>
         <span className="price">${product.price.toLocaleString('es-CO')}</span>
         
         <div className="quantity-selector">
