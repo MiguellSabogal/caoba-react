@@ -47,7 +47,7 @@ const productsData = [
   { id: 40, name: "Billetera en cuero color Café Oscuro", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Cafe oscuro.jpg" },
   { id: 41, name: "Billetera en cuero color Hoja Seca", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/HojaSeca.jpg" },
   { id: 42, name: "Combo dupla", category: "combos", price: 79900, img: "Imagenes/Combos/DosCorreas.jpg", description:"Incluye dos cinturones a elección" },
-  { id: 43, name: "Combo Pareja", category: "combos", price: 99900, img: "Imagenes/Combos/DosCorreasYBilletera.jpg", description:"Incluye dos cinturones y una billetera de cuero a elección" },
+  { id: 43, name: "Combo Pareja", category: "combos", price: 99900, img: "Imagenes/Combos/Pareja.jpg", description:"Incluye dos cinturones y una billetera de cuero a elección" },
   { id: 44, name: "Combo trio", category: "combos", price: 109900, img: "Imagenes/Combos/Trio.jpg", description:"Incluye tres cinturones a elección" },
   { id: 45, name: "Combo seguro", category: "combos", price: 55900, img: "Imagenes/Combos/Seguro.jpg", description:"Incluye una billetera de cuero y un portadocumentos de cuero a elección" },
   { id: 46, name: "Combo perfecto", category: "combos", price: 65900, img: "Imagenes/Combos/Perfecto.jpg", description:"Incluye un cinturón y un portadocumentos a elección" },
