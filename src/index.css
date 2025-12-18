@@ -678,3 +678,83 @@ footer {
     line-height: 1.4;
     min-height: 40px; /* Truco: Mantiene todas las tarjetas del mismo alto aunque el texto sea corto */
 }
+
+/* --- MINI SLIDER DE PRODUCTO --- */
+
+/* Contenedor principal: Necesario para posicionar las flechas */
+.product-image-slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Asegura que las imágenes del slider se comporten igual que las normales */
+.product-slider-img {
+    width: 100%;
+    height: 300px; /* Mantén la misma altura fija que tus otras imágenes */
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+/* Botones de flecha mini */
+.mini-slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro semitransparente */
+    color: #fff;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    z-index: 2; /* Para que estén sobre la imagen */
+    
+    /* Efecto: Ocultos por defecto, aparecen al hacer hover en la tarjeta */
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+/* Posicionamiento de flechas */
+.mini-slider-arrow.left { left: 10px; }
+.mini-slider-arrow.right { right: 10px; }
+
+/* Mostrar flechas al pasar el mouse por la imagen */
+.product-image:hover .mini-slider-arrow {
+    opacity: 1;
+}
+
+.mini-slider-arrow:hover {
+    background-color: var(--accent-color); /* Color dorado al pasar el mouse */
+    color: var(--primary-color); /* Icono oscuro */
+}
+
+/* Puntos indicadores */
+.slider-dots-container {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+.slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.slider-dot.active {
+    background-color: var(--accent-color); /* Punto activo dorado */
+    transform: scale(1.2); /* Un poco más grande */
+}

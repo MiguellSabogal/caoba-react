@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
 const productsData = [
-  { id: 1, name: "Billetera en cuero color Miel", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Marron.jpg" },
-  { id: 2, name: "Billetera en cuero color Azul Oscura", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/AzulOs.jpg" },
-  { id: 3, name: "Billetera en cuero color Negro", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Negra.jpg" },
-  { id: 4, name: "Billetera en cuero color Rojo", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Roja.jpg" },
-  
+  { id: 1, name: "Billetera en cuero color Miel", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Marron.jpg", images: ["Imagenes/Billeteras/Marron.jpg", "Imagenes/Billeteras/InteriorMarron.jpg"] },
+  { id: 2, name: "Billetera en cuero color Azul Oscura", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/AzulOs.jpg", images: ["Imagenes/Billeteras/AzulOs.jpg", "Imagenes/Billeteras/InteriorAzulOs.jpg"] },
+  { id: 3, name: "Billetera en cuero color Negro", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Negra.jpg", images: ["Imagenes/Billeteras/Negra.jpg", "Imagenes/Billeteras/InteriorNegra.jpg"] },
+  { id: 4, name: "Billetera en cuero color Rojo", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Roja.jpg", images: ["Imagenes/Billeteras/Roja.jpg", "Imagenes/Billeteras/InteriorRoja.jpg"] },
+
   { id: 5, name: "Cinturón Aguamarina", category: "cinturones", price: 59900, img: "Imagenes/Correas/Aguamarina.jpg" },
   { id: 6, name: "Cinturón Amarillo-Azul", category: "cinturones", price: 59900, img: "Imagenes/Correas/AmarilloAzul.jpg" },
   { id: 7, name: "Cinturón Tonos Azules", category: "cinturones", price: 59900, img: "Imagenes/Correas/Azules.jpg" },
@@ -43,9 +43,9 @@ const productsData = [
   { id: 36, name: "Portadocumentos Lila", category: "portadocumentos", price: 19900, img: "Imagenes/Carteras/Rosa.jpg" },
   { id: 37, name: "Portadocumentos Beige", category: "portadocumentos", price: 19900, img: "Imagenes/Carteras/Roja.jpg" },
   { id: 38, name: "Portadocumentos Palo De Rosa", category: "portadocumentos", price: 19900, img: "Imagenes/Carteras/Cafe.jpg" },
-  { id: 39, name: "Billetera en cuero color Coña", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Conia.jpg" },
-  { id: 40, name: "Billetera en cuero color Café Oscuro", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Cafe oscuro.jpg" },
-  { id: 41, name: "Billetera en cuero color Hoja Seca", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/HojaSeca.jpg" },
+  { id: 39, name: "Billetera en cuero color Coña", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Conia.jpg", images: ["Imagenes/Billeteras/Conia.jpg", "Imagenes/Billeteras/InteriorMarron.jpg"] },
+  { id: 40, name: "Billetera en cuero color Café Oscuro", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/Cafe oscuro.jpg", images: ["Imagenes/Billeteras/Cafe oscuro.jpg", "Imagenes/Billeteras/InteriorCafeOscuro.jpg"] },
+  { id: 41, name: "Billetera en cuero color Hoja Seca", category: "billeteras", price: 45900, img: "Imagenes/Billeteras/HojaSeca.jpg", images: ["Imagenes/Billeteras/HojaSeca.jpg", "Imagenes/Billeteras/InteriorMarron.jpg"] },
   { id: 42, name: "Combo dupla", category: "combos", price: 79900, img: "Imagenes/Combos/DosCorreas.jpg", description:"Incluye dos cinturones a elección" },
   { id: 43, name: "Combo Pareja", category: "combos", price: 99900, img: "Imagenes/Combos/Pareja.jpg", description:"Incluye dos cinturones y una billetera de cuero a elección" },
   { id: 44, name: "Combo trio", category: "combos", price: 109900, img: "Imagenes/Combos/Trio.jpg", description:"Incluye tres cinturones a elección" },
@@ -54,8 +54,63 @@ const productsData = [
   { id: 47, name: "Combo para regalar", category: "combos", price: 89900, img: "Imagenes/Combos/Regalar.jpg", description:"Incluye un cinturón, una billetera de cuero y un portadocumentos a elección" },
   { id: 48, name: "Combo X3", category: "combos", price: 49900, img: "Imagenes/Combos/Portadocumentos.jpg", description:"Incluye tres portadocumentos a elección" },
   { id: 49, name: "Combo X5", category: "combos", price: 69900, img: "Imagenes/Combos/Portadocumentos.jpg", description:"Incluye cinco portadocumentos a elección" },
-
+  { id: 50, name: "Cinturón Blanco", category: "cinturones", price: 59900, img: "Imagenes/Correas/Blanca.jpeg" },
+  { id: 51, name: "Cinturón Azul Elegante", category: "cinturones", price: 59900, img: "Imagenes/Correas/AzulElegante.jpeg"},
+  { id: 52, name: "Cinturón Blanco y Negro", category: "cinturones", price: 59900, img: "Imagenes/Correas/Neutros.jpeg"},
 ];
+
+// --- MINI COMPONENTE: SLIDER DE IMÁGENES ---
+const ProductImageSlider = ({ images, altText }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Si no hay imágenes o el array está vacío, no mostramos nada (seguridad)
+  if (!images || images.length === 0) return null;
+
+  const nextSlide = (e) => {
+    e.preventDefault(); // Evita comportamientos raros
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const prevSlide = (e) => {
+    e.preventDefault();
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+  };
+
+  return (
+    <div className="product-image-slider-container">
+      {/* La imagen actual */}
+      <img 
+        src={images[currentIndex]} 
+        alt={`${altText} - Vista ${currentIndex + 1}`} 
+        className="product-slider-img"
+      />
+
+      {/* Solo mostramos flechas y puntos si hay MÁS de una imagen */}
+      {images.length > 1 && (
+        <>
+          {/* Flechas de navegación */}
+          <button className="mini-slider-arrow left" onClick={prevSlide}>
+            <i className="fas fa-chevron-left"></i>
+          </button>
+          <button className="mini-slider-arrow right" onClick={nextSlide}>
+            <i className="fas fa-chevron-right"></i>
+          </button>
+
+          {/* Puntos indicadores abajo */}
+          <div className="slider-dots-container">
+            {images.map((_, idx) => (
+              <span 
+                key={idx} 
+                className={`slider-dot ${idx === currentIndex ? 'active' : ''}`}
+                onClick={() => setCurrentIndex(idx)} // Clic en el punto para ir a esa foto
+              ></span>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 const ProductItem = ({ product, addToCart }) => {
   const [quantity, setQuantity] = useState(1);
@@ -68,9 +123,15 @@ const ProductItem = ({ product, addToCart }) => {
   return (
     <div className="product-card fade-in">
       <div className="product-image">
-        {/* MEJORA: loading="lazy" hace que la imagen solo se cargue cuando aparece en pantalla */}
-        <img src={product.img} alt={product.name} loading="lazy" />
+        {product.images && product.images.length > 1 ? (
+          // Opción A: Tiene múltiples imágenes, usamos el slider
+          <ProductImageSlider images={product.images} altText={product.name} />
+        ) : (
+          // Opción B: Solo tiene una imagen, usamos la normal
+          <img src={product.img} alt={product.name} />
+        )}
       </div>
+      
       <div className="product-info">
         <h3>{product.name}</h3>
         <p className="product-desc">{product.description}</p>
