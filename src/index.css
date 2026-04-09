@@ -758,3 +758,50 @@ footer {
     background-color: var(--accent-color); /* Punto activo dorado */
     transform: scale(1.2); /* Un poco más grande */
 }
+
+/* --- CARTEL DE PROMOCIÓN --- */
+.promo-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(45deg, #e74c3c, #f39c12);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.5);
+    text-transform: uppercase;
+    animation: pulse-badge 2s infinite; 
+}
+
+@keyframes pulse-badge {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+/* --- ESTILOS DE PRECIOS --- */
+.price-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    text-decoration-color: #e74c3c;
+    text-decoration-thickness: 2px;
+    color: #888;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+.price-container .price {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
