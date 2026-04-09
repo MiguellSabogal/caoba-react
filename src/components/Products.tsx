@@ -54,9 +54,9 @@ const productsData = [
   { id: 47, name: "Combo para regalar", category: "combos", oldprice: 89900, price: 64900, img: "Imagenes/Combos/Regalar.jpg", description:"Incluye un cinturón, una billetera de cuero y un portadocumentos a elección", images: ["Imagenes/Combos/Combo6.jpeg", "Imagenes/Combos/Combo6_1.jpeg", "Imagenes/Combos/Combo6_2.jpeg", "Imagenes/Combos/Combo6_3.jpeg", "Imagenes/Combos/Combo6_4.jpeg"]},
   { id: 48, name: "Combo X3", category: "combos", oldprice: 49900, price: 29900, img: "Imagenes/Combos/Portadocumentos.jpg", description:"Incluye tres portadocumentos a elección", images: ["Imagenes/Combos/Combo7.jpeg", "Imagenes/Combos/Combo7_1.jpeg", "Imagenes/Combos/Combo7_2.jpeg", "Imagenes/Combos/Combo7_3.jpeg"]},
   { id: 49, name: "Combo X5", category: "combos", price: 69900, img: "Imagenes/Combos/Portadocumentos.jpg", description:"Incluye cinco portadocumentos a elección", images: ["Imagenes/Combos/Combo7.jpeg", "Imagenes/Combos/Combo7_1.jpeg", "Imagenes/Combos/Combo7_2.jpeg"] },
-  { id: 50, name: "Cinturón Blanco", category: "cinturones", price: 59900, img: "Imagenes/Correas/Blanca.jpeg" },
-  { id: 51, name: "Cinturón Azul Elegante", category: "cinturones", price: 59900, img: "Imagenes/Correas/AzulElegante.jpeg"},
-  { id: 52, name: "Cinturón Blanco y Negro", category: "cinturones", price: 59900, img: "Imagenes/Correas/Neutros.jpeg"},
+  { id: 50, name: "Cinturón Blanco", category: "cinturones", oldprice: 59900, price: 29900, img: "Imagenes/Correas/Blanca.jpeg" },
+  { id: 51, name: "Cinturón Azul Elegante", category: "cinturones", oldprice: 59900, price: 29900, img: "Imagenes/Correas/AzulElegante.jpeg"},
+  { id: 52, name: "Cinturón Blanco y Negro", category: "cinturones", oldprice: 59900, price: 29900, img: "Imagenes/Correas/Neutros.jpeg"},
 ];
 
 // --- MINI COMPONENTE: SLIDER DE IMÁGENES ---
